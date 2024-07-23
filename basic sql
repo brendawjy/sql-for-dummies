@@ -36,3 +36,12 @@ WHERE month_name <= 'N'
 SELECT *
 FROM tutorial.us_housing_units
 WHERE midwest + northeast < west
+
+-- SORTING
+
+/* use ORDER BY query. you can use several columns to order the dataset. 
+   here we are ordering by 'year' column first, in a descending way. then order by 'year_rank' column */
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+ORDER BY year DESC, year_rank
+
