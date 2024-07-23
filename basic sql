@@ -1,22 +1,38 @@
--- geting the dataset
+-- SIMPLE QUERYING (aka CALLING SOME/ALL COLUMNS IN THE DATASET)
+
+/* geting the dataset, all columns */
 SELECT *
 FROM tutorial.us_housing_units
---  this is  real data from the U.S. Census. 
--- it shows the number of completed housing units in major regions of the United States. 
--- The table has a column for each region. 
--- The values in each row represent the number of housing units completed in thousands 
--- during the corresponding month. 
--- The data was collected in August 2014 and can be accessed at the U.S. Census website.
 
+/* if you want to select only year, month, and west columns: */
 SELECT year, month, west
 FROM tutorial.us_housing_units
 
--- renaming columns
+/* renaming columns */
 SELECT west AS "West Region",
         south AS "South Region",
         midwest AS "Midwest Region",
         northeast AS "Northeast Region"
 FROM tutorial.us_housing_units
 
+/* performing arithmetic operation  to create a new column and immediately calling it: */
+SELECT year, 
+      month, 
+      south, 
+      west,
+      midwest,
+      northeast,
+      south + west + midwest + northeast AS sum_of_all_regions
+FROM tutorial.us_housing_units
+
+-- FILTERING
+
+/* selecting only months whose month's name starts with letter before or equal to 'N' */
 SELECT *
 FROM tutorial.us_housing_units
+WHERE month_name <= 'N'
+
+/* selecting all columns for observations where units in West is bigger than Midwest and Northeast combined
+SELECT *
+FROM tutorial.us_housing_units
+WHERE midwest + northeast < west
