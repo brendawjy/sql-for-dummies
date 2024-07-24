@@ -1,1 +1,34 @@
+-- FILTERING
 
+/* selecting only months whose month's name starts with letter before or equal to 'N' */
+SELECT *
+FROM tutorial.us_housing_units
+WHERE month_name <= 'N'
+
+/* selecting all columns for observations where units in West is bigger than Midwest and Northeast combined */
+SELECT *
+FROM tutorial.us_housing_units
+WHERE midwest + northeast < west
+
+/* WITH LIKE (case sensitive) AND ILIKE (not case sensitive) QUERY */
+
+-- selecting only those that contains Snoop
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE "group_name" LIKE 'Snoop%'
+
+-- selecting only those that contains Snoop, but not case sensitive
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE "group_name" ILIKE 'Snoop%'
+
+-- the % is a wildcard, it's like telling SQL to give you all that starts with Snoop (bcs you put the % in the back)
+-- if you want to make sure that SQL gives you everything that contains Snoop, either starts with Snoop or not, use %Snoop%
+
+/* filtering with IN operator */
+
+-- this query will give you all columns whose value in the year_rank column is 1 or 2 or 3. I see it like filtering in
+-- Ms. Excel with several values
+SELECT *
+FROM tutorial.billboard_top_100_year_end
+WHERE year_rank IN (1,2,3)
